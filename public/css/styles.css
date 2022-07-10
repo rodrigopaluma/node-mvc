@@ -106,6 +106,12 @@ body {
     color: #333;
 }
 
+.title.done {
+    color: #ccc;
+    text-decoration: line-through;
+
+}
+
 .actions {
     display: flex;
 }
