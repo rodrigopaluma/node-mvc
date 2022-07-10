@@ -5,8 +5,13 @@
             <a href="/tasks/{{id}}" class="title">{{title}}</a>
             <div class="actions">
                 <a href="/"><i class="bi bi-check2"></i></a>
-                <a href="/"><i class="bi bi-pencil-square"></i></a>
-                <a href="/"><i class="bi bi-x-lg"></i></a>
+                <a href="/tasks/edit/{{id}}"><i class="bi bi-pencil-square"></i></a>
+                <form action="/tasks/remove" method="POST">
+                    <input type="hidden" name="id" value="{{id}}">
+                    <button type="submit">
+                        <i class="bi bi-x-lg"></i>
+                    </button>
+                </form>
             </div>
         </li>
     {{/each}}

@@ -114,8 +114,14 @@ body {
     font-size: 1.5em;
     margin-right: 0.6em;
     color: #333;
+    cursor: pointer;
 }
 
 .actions i:hover {
     color: #db4c3f;
+}
+
+.actions button {
+    background-color: transparent;
+    border: none;
 }

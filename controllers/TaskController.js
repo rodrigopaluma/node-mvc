@@ -5,6 +5,41 @@ module.exports = class TaskController {
         res.render('tasks/create');
     }
 
+    static async removeTask(req, res) {
+        const id = req.body.id;
+        await Task.destroy({
+            where: {
+                id: id
+            }
+        });
+        res.redirect('/tasks');
+    }
+
+    static async updateTask(req, res) {
+        const id = req.params.id;
+        const task = await Task.findOne({
+            where: {
+                id: id
+            }, raw: true
+        });
+        res.render('tasks/edit', {task});
+    }
+
+    static async updateTaskSave(req, res) {
+        const id = req.body.id;
+        const task = {
+            title: req.body.title,
+            description: req.body.description
+        }
+
+        await Task.update(task, {
+            where: {
+                id: id
+            }
+        });
+        res.redirect('/tasks');
+    }
+
     static async createTaskSave(req, res) {
         const task = {
             title: req.body.title,
@@ -17,9 +52,7 @@ module.exports = class TaskController {
     }
 
     static async showTasks(req, res) {
-
         const tasks = await Task.findAll({raw:true});
-
         res.render('tasks/allTasks',{tasks});
     }
 }
