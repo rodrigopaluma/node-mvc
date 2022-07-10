@@ -11,5 +11,11 @@ app.use(express.static('public'));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+const Task = require('./models/Task');
 
-app.listen(3000);
+
+conn
+    .sync()
+    .then(()=> {
+        app.listen(3000);
+}).catch((err)=> console.log(err));
